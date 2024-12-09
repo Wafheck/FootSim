@@ -9,16 +9,17 @@ import sys
 # INTIALIZE WINDOW
 root = tk.Tk()
 root.title("FootSim - Python based match engine")
-root.geometry("1920x1080")
+root.geometry("1920x1400")
 menubar = Menu(root) 
 genfont = ("Courier New", 12)
 smolfont = ("Arial", 7)
 biggfont = ("Verdana", 16)
 ratefont = ("Arial", 14)
+simfont = ("Verdana", 17)
 redcanva = Canvas(root, bg="red")
-redcanva.place(x=0, y=0, width=960, height=1080)
+redcanva.place(x=0, y=0, width=960, height=1400)
 bluecanva = Canvas(root, bg="Blue")
-bluecanva.place(x=961, y=0, width=960, height=1080)
+bluecanva.place(x=961, y=0, width=960, height=1400)
 pform = (-3,-2,-1,0,1,2,3)
 randratings = list(range(45, 100))
 
@@ -113,45 +114,45 @@ def updatestar2():
         global t2star5
         clearstar2()
         strval = 5
-        t2star5.place(x=1186, y=720)
+        t2star5.place(x=1606, y=720)
     elif avg > 85 and avg < 94:
         global t2star45
         clearstar2()
         strval = 4.5
-        t2star45.place(x=1186, y=720)
+        t2star45.place(x=1606, y=720)
     elif avg > 80  and avg < 86:
         global t2star4
         clearstar2()
         strval = 4
-        t2star4.place(x=1186, y=720)
+        t2star4.place(x=1606, y=720)
     elif avg > 75 and avg < 81:
         clearstar2()
         strval = 3.5
-        t2star35.place(x=1186, y=720)
+        t2star35.place(x=1606, y=720)
     elif avg > 70 and avg < 76:
         clearstar2()
         strval = 3
-        t2star3.place(x=1186, y=720)
+        t2star3.place(x=1606, y=720)
     elif avg > 65 and avg < 71:
         clearstar2()
         strval = 2.5
-        t2star25.place(x=1186, y=720)
+        t2star25.place(x=1606, y=720)
     elif avg > 60 and avg < 66:
         clearstar2()
         strval = 2
-        t2star2.place(x=1186, y=720)
+        t2star2.place(x=1606, y=720)
     elif avg > 55 and avg < 61:
         clearstar2()
         strval = 1.5
-        t2star15.place(x=1186, y=720)
+        t2star15.place(x=1606, y=720)
     elif avg > 50 and avg < 56:
         clearstar2()
         strval = 1
-        t2star1.place(x=1186, y=720)
+        t2star1.place(x=1606, y=720)
     elif avg > 0 and avg < 51:
         clearstar2()
         strval = 0.5
-        t2star05.place(x=1186, y=720)
+        t2star05.place(x=1606, y=720)
 
 def limit_value(value):
     try:
@@ -500,14 +501,14 @@ def initialize():
         afield2.place(x=1400, y=150)
     if name1 == 0:
         enteam1.place(x=100, y=130)
-        getteam1.place(x=225, y=130)
+        getteam1.place(x=250, y=130)
     if name1 == 1:
         team1.place(x=100, y=125)
     if name2 == 0:
-        enteam2.place(x=1080, y=130)
-        getteam2.place(x=1205, y=130)
+        enteam2.place(x=1400, y=130)
+        getteam2.place(x=1550, y=130)
     if name2 == 1:
-        team2.place(x=1080, y=125)
+        team2.place(x=1400, y=125)
     aforwardavg.place(x=0, y=210)
     amidavg.place(x=0, y=310)
     adefenseavg.place(x=0, y=410)
@@ -517,28 +518,28 @@ def initialize():
     att1.place(x=0, y=180)
     mid1.place(x=0, y=280)
     def1.place(x=0, y=380)
-    att2.place(x=1460, y=220)
-    mid2.place(x=1440, y=320)
-    def2.place(x=1450, y=420)
+    att2.place(x=1815, y=220, anchor=CENTER)
+    mid2.place(x=1760, y=320)
+    def2.place(x=1770, y=420)
     t1star0.place(x=206, y=720)
-    t2star0.place(x=1186, y=720)
+    t2star0.place(x=1606, y=720)
     Freeze1.place(x=100, y=635)
-    Freeze2.place(x=1080, y=635)
-    simulate.place(x=700, y=650)
-    selformations1.place(x=100, y=106)
-    selformations2.place(x=1080, y=106)
-    dynamic_button.place(x=164, y=635)
-    defend_button.place(x=234, y=635)
-    balanced_button.place(x=304, y=635)
-    attack_button.place(x=374, y=635)
-    bdynamic_button.place(x=1144, y=635)
-    bdefend_button.place(x=1214, y=635)
-    bbalanced_button.place(x=1284, y=635)
-    battack_button.place(x=1354, y=635)
+    Freeze2.place(x=1400, y=635)
+    simulate.place(x=960, y=850, anchor=CENTER)
+    selformations1.place(x=100, y=107)
+    selformations2.place(x=1400, y=107)
+    dynamic_button.place(x=440, y=150)
+    defend_button.place(x=440, y=172)
+    balanced_button.place(x=440, y=192)
+    attack_button.place(x=440, y=212)
+    bdynamic_button.place(x=1305, y=150)
+    bdefend_button.place(x=1305, y=172)
+    bbalanced_button.place(x=1305, y=192)
+    battack_button.place(x=1305, y=212)
     reset1.place(x=100, y=660)
-    reset2.place(x=1080, y=660)
+    reset2.place(x=1400, y=660)
     randomfill1.place(x=100, y=680)
-    randomfill2.place(x=1080, y=680)
+    randomfill2.place(x=1400, y=680)
     showrat1()
     showrat2()
 
@@ -579,7 +580,7 @@ def setteam2():
     global name2
     name2 = 1
     t2name_var.set(str(enteam2.get()))
-    team2.place(x=1080, y=125)
+    team2.place(x=1400, y=125)
     getteam2.place_forget()
     enteam2.place_forget()
 
@@ -887,7 +888,7 @@ def resetrate2():
     bmidavg_var.set("")
     bdefenseavg_var.set("")
     clearstar2()
-    t2star0.place(x=1186, y=720)
+    t2star0.place(x=1506, y=720)
 
 def aupdate_avg_433():
     aupdfwdsum = int(t1f1_var.get()) + int(t1f2_var.get()) + int(t1f3_var.get())
@@ -1915,22 +1916,22 @@ def t2attack():
     global t2strat
     t2strat = 3
     clearfield2()
-    afield2.place(x=1080, y=150)
+    afield2.place(x=1400, y=150)
 def t2balance():
     global t2strat
     t2strat = 2
     clearfield2()
-    bfield2.place(x=1080, y=150)
+    bfield2.place(x=1400, y=150)
 def t2defend():
     global t2strat
     t2strat = 1
     clearfield2()
-    dfield2.place(x=1080, y=150)
+    dfield2.place(x=1400, y=150)
 def t2dyn():
     global t2strat
     t2strat = 0
     clearfield2()
-    field2.place(x=1080, y=150)
+    field2.place(x=1400, y=150)
 def Randomfill1():
     if t1a == 3 and t1m == 3 and t1d == 5:
         af0_var.set(random.choice(randratings))
@@ -2109,7 +2110,7 @@ Freeze1 = Button(root, textvariable=freeze1_var, command=freeze1, width=8)
 freeze2_var = StringVar()
 freeze2_var.set("FREEZE")
 Freeze2 = Button(root, textvariable=freeze2_var, command=freeze2, width=8)
-simulate = Button(root, text="SIMULATE", command=Simulate, font=ratefont)
+simulate = Button(root, text="SIMULATE", command=Simulate, font=simfont)
 formations1 = StringVar()
 formations1.set("4-3-3")
 selformations1 = ttk.Combobox(root, textvariable=formations1, values=FORMATIONS, state= "readonly")
@@ -2121,15 +2122,15 @@ selformations2.bind("<<ComboboxSelected>>", changeform2)
 switch_variable = tk.StringVar(value="off")
 bswitch_variable = tk.StringVar(value="off")
 
-dynamic_button = tk.Radiobutton(root, text="Dynamic", variable=switch_variable, indicatoron=True, value="off", width=6, command=t1dyn, bg="gray")
-defend_button = tk.Radiobutton(root, text="Defensive", variable=switch_variable, indicatoron=True, value="low", width=6, command=t1defend, bg="Green")
-balanced_button = tk.Radiobutton(root, text="Balanced", variable=switch_variable, indicatoron=True, value="medium", width=6, command=t1balance, bg="Yellow")
-attack_button = tk.Radiobutton(root, text="Attacking", variable=switch_variable, indicatoron=True, value="high", width=6, command=t1attack, bg="Orange")
+dynamic_button = tk.Radiobutton(root, text="Dynamic", variable=switch_variable, indicatoron=True, value="off", width=8, command=t1dyn, bg="gray")
+defend_button = tk.Radiobutton(root, text="Defensive", variable=switch_variable, indicatoron=True, value="low", width=8, command=t1defend, bg="Green")
+balanced_button = tk.Radiobutton(root, text="Balanced", variable=switch_variable, indicatoron=True, value="medium", width=8, command=t1balance, bg="Yellow")
+attack_button = tk.Radiobutton(root, text="Attacking", variable=switch_variable, indicatoron=True, value="high", width=8, command=t1attack, bg="Orange")
 
-bdynamic_button = tk.Radiobutton(root, text="Dynamic", variable=bswitch_variable, indicatoron=True, value="off", width=6, bg="gray", command=t2dyn)
-bdefend_button = tk.Radiobutton(root, text="Defensive", variable=bswitch_variable, indicatoron=True, value="low", width=6, bg="Green", command=t2defend)
-bbalanced_button = tk.Radiobutton(root, text="Balanced", variable=bswitch_variable, indicatoron=True, value="medium", width=6, bg="Yellow", command=t2balance)
-battack_button = tk.Radiobutton(root, text="Attacking", variable=bswitch_variable, indicatoron=True, value="high", width=6, bg="Orange", command=t2attack)
+bdynamic_button = tk.Radiobutton(root, text="Dynamic", variable=bswitch_variable, indicatoron=True, value="off", width=8, bg="gray", command=t2dyn)
+bdefend_button = tk.Radiobutton(root, text="Defensive", variable=bswitch_variable, indicatoron=True, value="low", width=8, bg="Green", command=t2defend)
+bbalanced_button = tk.Radiobutton(root, text="Balanced", variable=bswitch_variable, indicatoron=True, value="medium", width=8, bg="Yellow", command=t2balance)
+battack_button = tk.Radiobutton(root, text="Attacking", variable=bswitch_variable, indicatoron=True, value="high", width=8, bg="Orange", command=t2attack)
 
 reset1 = Button(root, text="RESET", command=resetrate1, font=smolfont, width=56)
 reset2 = Button(root, text="RESET", command=resetrate2, font=smolfont, width=56)
