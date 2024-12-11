@@ -22,6 +22,13 @@ bluecanva = Canvas(root, bg="Blue")
 bluecanva.place(x=961, y=0, width=960, height=1400)
 pform = (-3,-2,-1,0,1,2,3)
 randratings = list(range(45, 100))
+ratingnoise = list(range(-10,11))
+percent = list(range(1, 101))
+t1score = 0
+t2score = 0
+advcoeff = 0
+t1coeff = 0
+t2coeff = 0
 
 #INI SETTINGS
 simlgh = 3
@@ -51,6 +58,7 @@ FORMATIONS = [
     "5-3-2"
 ]
 
+matchcanva = Canvas(root, bg="grey")
 
 def updatestar1():
     print("Updating Stars")
@@ -114,45 +122,45 @@ def updatestar2():
         global t2star5
         clearstar2()
         strval = 5
-        t2star5.place(x=1606, y=720)
+        t2star5.place(x=1506, y=720)
     elif avg > 85 and avg < 94:
         global t2star45
         clearstar2()
         strval = 4.5
-        t2star45.place(x=1606, y=720)
+        t2star45.place(x=1506, y=720)
     elif avg > 80  and avg < 86:
         global t2star4
         clearstar2()
         strval = 4
-        t2star4.place(x=1606, y=720)
+        t2star4.place(x=1506, y=720)
     elif avg > 75 and avg < 81:
         clearstar2()
         strval = 3.5
-        t2star35.place(x=1606, y=720)
+        t2star35.place(x=1506, y=720)
     elif avg > 70 and avg < 76:
         clearstar2()
         strval = 3
-        t2star3.place(x=1606, y=720)
+        t2star3.place(x=1506, y=720)
     elif avg > 65 and avg < 71:
         clearstar2()
         strval = 2.5
-        t2star25.place(x=1606, y=720)
+        t2star25.place(x=1506, y=720)
     elif avg > 60 and avg < 66:
         clearstar2()
         strval = 2
-        t2star2.place(x=1606, y=720)
+        t2star2.place(x=1506, y=720)
     elif avg > 55 and avg < 61:
         clearstar2()
         strval = 1.5
-        t2star15.place(x=1606, y=720)
+        t2star15.place(x=1506, y=720)
     elif avg > 50 and avg < 56:
         clearstar2()
         strval = 1
-        t2star1.place(x=1606, y=720)
+        t2star1.place(x=1506, y=720)
     elif avg > 0 and avg < 51:
         clearstar2()
         strval = 0.5
-        t2star05.place(x=1606, y=720)
+        t2star05.place(x=1506, y=720)
 
 def limit_value(value):
     try:
@@ -522,7 +530,7 @@ def initialize():
     mid2.place(x=1760, y=320)
     def2.place(x=1770, y=420)
     t1star0.place(x=206, y=720)
-    t2star0.place(x=1606, y=720)
+    t2star0.place(x=1506, y=720)
     Freeze1.place(x=100, y=635)
     Freeze2.place(x=1400, y=635)
     simulate.place(x=960, y=850, anchor=CENTER)
@@ -555,6 +563,7 @@ def clearstar1():
     t1star4.place_forget()
     t1star45.place_forget()
     t1star5.place_forget()
+
 def clearstar2():
     t2star0.place_forget()
     t1star05.place_forget()
@@ -667,9 +676,9 @@ def showrat2():
         bm1.place(x=1560, y=375)
         bm2.place(x=1620, y=375)
         bd0.place(x=1450, y=500)
-        bd1.place(x=1510, y=500)
-        bd2.place(x=1570, y=500)
-        bd3.place(x=1630, y=500)
+        bd1.place(x=1530, y=500)
+        bd2.place(x=1590, y=500)
+        bd3.place(x=1670, y=500)
     ###4-2-3-1###
     if t2a == 1 and t2m == 5 and t2d == 5:
         bf1.place(x=1560, y=250)
@@ -940,37 +949,74 @@ def bupdate_avg_433():
     bupddfavg_var.set(round(bupddfavg_ntrun, 2))
     if bupdfwdavg_var.get() >= bforwardavg_var.get():
          bupdfwdavg.config(bg="green", fg="white")
-         bupdfwdavg.place(x=1482, y=280)
+         bupdfwdavg.place(x=1795, y=280)
          bupdfwdavg.tkraise()
     elif bupdfwdavg_var.get() < bforwardavg_var.get():
          bupdfwdavg.config(bg="yellow", fg="black")
-         bupdfwdavg.place(x=1482, y=280)
+         bupdfwdavg.place(x=1795, y=280)
          bupdfwdavg.tkraise()
     if bupdmdavg_var.get() >= bmidavg_var.get():
          bupdmdavg.config(bg="green", fg="white")
-         bupdmdavg.place(x=1482, y=380)
+         bupdmdavg.place(x=1795, y=380)
          bupdmdavg.tkraise()
     elif bupdmdavg_var.get() < bmidavg_var.get():
          bupdmdavg.config(bg="yellow", fg="black")
-         bupdmdavg.place(x=1482, y=380)
+         bupdmdavg.place(x=1795, y=380)
          bupdmdavg.tkraise()
     if bupddfavg_var.get() >= bdefenseavg_var.get():
          bupddfavg.config(bg="green", fg="white")
-         bupddfavg.place(x=1482, y=480)
+         bupddfavg.place(x=1795, y=480)
          bupddfavg.tkraise()
     elif bupddfavg_var.get() < bdefenseavg_var.get():
          bupddfavg.config(bg="yellow", fg="black")
-         bupddfavg.place(x=1482, y=480)
+         bupddfavg.place(x=1795, y=480)
          bupddfavg.tkraise()
-         bupdfwdavg.place(x=1482, y=280)
-         bupdmdavg.place(x=1482, y=380) 
-         bupddfavg.place(x=1482, y=480)
+         bupdfwdavg.place(x=1795, y=280)
+         bupdmdavg.place(x=1795, y=380) 
+         bupddfavg.place(x=1795, y=480)
+
+def team1attempt():
+    global time
+    global t1score
+    chancerate = random.choice(range(-5,6))
+    composerate = random.choice(range(-5,6))
+    t1_adjusted_attack = max(0, min(99, t1attck + chancerate))
+    t2_adjusted_defense = max(0, min(99, t2def + composerate))
+    diff = t1_adjusted_attack - t2_adjusted_defense
+    scrcoeff = max(0, min(1, 0.4 + diff / 100))
+    scorechance = round(scrcoeff * 100)
+    yesgoal = random.choice(percent)
+    if yesgoal <= scorechance:
+        t1score += 1
+        print("Team 1 scored. (" + str(t1score) + " - " + str(t2score) + ") [" + str(time) + "\']")
+    else:
+        print("Team 1 missed. (" + str(t1score) + " - " + str(t2score) + ") [" + str(time) + "\']")
+
+def team2attempt():
+    global time
+    global t2score
+    chancerate = random.choice(range(-5,6))
+    composerate = random.choice(range(-5,6))
+    t2_adjusted_attack = max(0, min(99, t2attck + chancerate))
+    t1_adjusted_defense = max(0, min(99, t1def + composerate))
+    diff = t2_adjusted_attack - t1_adjusted_defense
+    scrcoeff = max(0, min(1, 0.5 + diff / 100))
+    scorechance = round(scrcoeff * 100)
+    yesgoal = random.choice(percent)
+    if yesgoal <= scorechance:
+        t2score += 1
+        print("Team 2 scored. (" + str(t1score) + " - " + str(t2score) + ") [" + str(time) + "\']")
+    else:
+        print("Team 2 missed. (" + str(t1score) + " - " + str(t2score) + ") [" + str(time) + "\']") 
+
+
 def Simulate():
     print("sim clicked")
     clearsim()
     if f1val == 0 or f2val == 0 or aforwardavg_var.get() == "" or amidavg_var.get() == "" or adefenseavg_var.get() == "" or bforwardavg_var.get() == "" or bmidavg_var.get() == "" or bdefenseavg_var.get() == "":
         messagebox.showerror("Error", "Please freeze all player ratings. Make sure all player values are filled.") 
     elif f1val == 1 and f2val == 1:
+        matchcanva.place(x=540, y=150, width=760, height=600)
         if t1a == 3 and t1m == 3 and t1d == 5:
             t1f1_var.set(int(af0_var.get()) + random.choice(pform))
             if t1f1_var.get() >= af0_var.get():
@@ -1665,11 +1711,80 @@ def Simulate():
                 t2gk.config(bg="red", fg="white")
                 t2gk.place(x=1560, y=610)
                 t2gk.tkraise()
-            
+    timeperiod = list(range(1, 11))
+    timechoice = list(range(1, 91))
+    timepicked = list()
+    for i in timeperiod:
+        chosentime = random.choice(timechoice)
+        timechoice.remove(chosentime)
+        timepicked.append(chosentime)
+        timepicked.sort()
+        print(timepicked)
+    global t1attck
+    global t1def
+    global t2attck
+    global t2def
+    t1attck = aupdfwdavg
+    t1mid = aupdmidavg
+    t1def = aupddfavg
+    t2attck = bupdfwdavg
+    t2mid = bupdmdavg
+    t2def = bupddfavg
+    t1rating = int((t1attck + t1mid + t1def)/ 3)
+    t2rating = int((t2attck + t2mid + t2def)/ 3)
+    noise1 = random.choice(ratingnoise)
+    noise2 = random.choice(ratingnoise)
+    t1rating += noise1
+    t2rating += noise2
+    if t1rating >= t2rating:
+        diff = t1rating - t2rating
+        advcoeff = float((t2rating - diff)/(t1rating + t2rating))
+        t1coeff = 1 - advcoeff
+        t2coeff = advcoeff
+        print("team 1 coefficient: " + str(t1coeff))
+        print("team 2 coefficient: " + str(t2coeff))
+    elif t2rating > t1rating:
+        diff = t2rating - t1rating
+        advcoeff = float((t1rating - diff)/(t1rating + t2rating))
+        t1coeff = advcoeff
+        t2coeff = 1 - advcoeff
+        print("team 1 coefficient: " + str(t1coeff))
+        print("team 2 coefficient: " + str(t2coeff))
+
+    team1chances = int(round(t1coeff * 10))
+    team2chances = int(round(t2coeff * 10))
+    print("Team 1 chances: " + str(team1chances))
+    print("Team 2 chances: " + str(team2chances))
+    team1chances = list(range(1, team1chances + 1))
+    team2chances = list(range(1, team2chances + 1))
+    for i in timepicked:
+        global time
+        time = i
+        teampicker = random.choice([1, 2])
+        print(teampicker)
+        if teampicker == 1:
+            if len( team1chances) > 0:
+                team1chances.remove(random.choice(team1chances))
+                print("Team 1 has a chance to score. [ " + str(time) + "\' ]")
+                team1attempt()
+            else:
+                team2chances.remove(random.choice(team2chances))
+                print("Team 2 has a chance to score. [ " + str(time) + "\' ]")
+                team2attempt()
+        else:
+            if len(team2chances) > 0:
+                team2chances.remove(random.choice(team2chances))
+                print("Team 2 has a chance to score. [ " + str(time) + "\' ]")
+                team2attempt()
+            else:
+                team1chances.remove(random.choice(team1chances))
+                print("Team 1 has a chance to score. [ " + str(time) + "\' ]")
+                team1attempt()
     else:
         messagebox.showerror("Error", "Please freeze all player ratings. Make sure all player values are filled.")
 
 def clearsim():
+    matchcanva.place_forget()
     t1f1.place_forget()
     t1f2.place_forget()
     t1f3.place_forget()
